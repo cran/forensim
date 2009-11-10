@@ -328,8 +328,9 @@ function(tab,which.loc=NULL,ncontri=1)
 		popinfo <- NULL
 		poptemp <- as.character(unique(popind))
 		#print(poptemp)
-		for(p in poptemp)
+		for(p in popfac)
 		{
+			#print(N[p])
 			if(N[p]!=0)
 			{
 				samp1 <- sample(indID[popind == p  ],N[p],replace=FALSE)#chosen profiles to ssimulate the mixture
