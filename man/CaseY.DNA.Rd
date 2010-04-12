@@ -1,7 +1,5 @@
 \name{CaseY.DNA}
 \alias{CaseY.DNA}
-\docType{data}
-
 \title{
 Alleles of mixture, known contributor, defendant as well as missing (drop-out) allelels
 for US case (CaseY, see http://www.zebfontaine.eclipse.co.uk/djb.htm)
