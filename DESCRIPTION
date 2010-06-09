@@ -2,8 +2,8 @@ Package: forensim
 Type: Package
 Title: Statistical tools for the interpretation of forensic DNA
         mixtures
-Version: 1.1-5
-Date: 2010-05-25
+Version: 1.1-7
+Date: 2010-06-09
 Author: Hinda Haned <haned@biomserv.univ-lyon1.fr>
 Maintainer: Hinda Haned <haned@biomserv.univ-lyon1.fr>
 Suggests: gdata,gtools,MASS,mvtnorm,genetics,tcltk,tkrplot
@@ -20,6 +20,6 @@ Collate: classes_definitions.R classes_constructors.R accessors.R
         recordHeights.R tabSPH.R simPCR2.R simPCR2TK.R PV.R Hbsimu.R
 Repository: CRAN
 Repository/R-Forge/Project: forensim
-Repository/R-Forge/Revision: 257
-Date/Publication: 2010-06-03 13:49:35
-Packaged: 2010-06-02 20:55:40 UTC; rforge
+Repository/R-Forge/Revision: 270
+Date/Publication: 2010-07-24 20:15:46
+Packaged: 2010-06-14 20:56:59 UTC; rforge

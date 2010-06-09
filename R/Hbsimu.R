@@ -199,12 +199,14 @@
 		dd <- tktoplevel()
 		frameC <- tkframe(dd, relief="flat", borderwidth=4)
 		tkwm.title(dd,"Hb distribution")
-		Myhscale <- 1.55    # Horizontal scaling
-		Myvscale <- 1.55	 # Vertical scaling
+		Myhscale <- 1    # Horizontal scaling
+		Myvscale <- 1
+
+		# Vertical scaling
 		plotHb<-function()
 		{
 			params <- par(bg="white")
-			hist(Hbsim,col="gray",prob=TRUE,xlab="Hb",ylab="dF(x)",cex.lab=1.3,main="Heterozygous balance\n Probability density function")
+			hist(Hbsim,col="gray",prob=TRUE,xlab="Hb",ylab="dF(x)",cex.lab=1.3,main="Heterozygous balance\n Probability density function",xlim=c(0,1))
 			par(params)
 		}	
 
