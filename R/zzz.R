@@ -1,6 +1,6 @@
 
 .First.lib <-function (lib, pkg) {
 library.dynam("forensim", pkg, lib)
- cat("   ### forensim 2.0 is loaded ### \n")
-
+m0<-"## forensim 3.1 is loaded ###"
+packageStartupMessage(m0)
 }
