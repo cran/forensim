@@ -1,4 +1,4 @@
-89b5909fade7a8b70dabcad547e6cda3 *DESCRIPTION
+64632d283b37bdfe7ecc0818bef1dacd *DESCRIPTION
 ace60069cf1e1d7ae110326d82c612b1 *NAMESPACE
 07060a92221fbf776e7a0845c3d60ef4 *R/A2.simu.R
 8e7cd1e4c2f1b310ddab43c527361cef *R/A3.simu.R
@@ -6,7 +6,7 @@ a4f65c13ebce62c69931ba1dc5a6e75f *R/A4.simu.R
 5670a43e2ceb137b60be154dffaed127 *R/AuxFunc.R
 49ec76941789c7f62fd413bb1b010779 *R/Hbsimu.R
 84250e8b0805e2809502dfdc54a1e8a8 *R/LR.R
-f1c49553b1cdd8a02e4ee29a51c35b98 *R/LRmixTK.R
+e50b5c204992c6694d776e6487047296 *R/LRmixTK.R
 8ce32e6fc3861521c17d3873e6a3e6df *R/N2Exact.R
 9fc0dedb8228b7ce3effb75043552a73 *R/N2error.R
 efe77155252ed001c8d277f638c33acb *R/PE.R
@@ -19,13 +19,12 @@ fa39e7a16eaaa028b54dfd75af9478ae *R/classes_definitions.R
 66fd7658b2327ab4b4fffd6a355074a6 *R/likestim.R
 ceb60a04c656a041c5612498c44467eb *R/mastermix.R
 a8146dc05d5df2d8313458fce50ec7be *R/mincontri.R
-bb840fd28e7529889716c80c40fc8648 *R/simMixSNP.R
+2b8f221345995800563f94dc4aca8014 *R/simMixSNP.R
 c3b8b4f486e58bad8a7599c7a06a9345 *R/simPCR2.R
 3944ac9db84ca1fbf2239813d85568d0 *R/simPCR2TK.R
 9286e1b84dac4842e14162e63fd880ef *R/simufreqD.R
 5fdfce9ae35a3edacb2993c60bd97e37 *R/simupopD.R
 037ab07e0473527f769dcd6a33e74c5c *R/wrapdataL.R
-32bb49e3a1b295b4ff4ff4fa43fe283c *R/zzz.R
 b98bcd76104d25b387059e9dbf800bac *data/Tu.rdata
 47dda06809b66c46b89ede015d5e341e *data/ngm.rdata
 4a20011059d875314b06a8fddc38683b *data/sgmNorway.rdata
