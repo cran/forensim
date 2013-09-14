@@ -2,7 +2,7 @@
 #include <math.h>
 #include <Rmath.h>
 
-#define WITH_PERMUTATIONS
+// #define WITH_PERMUTATIONS
 #define FAST_VERSION_INFOREP
 
 // #define DEBUG_TOOL
@@ -399,8 +399,10 @@ double Pevid8(double *_uset, int _lenUset, double *_q, double *_frequence, int _
 		nbPairs[j] = nbPairs[j] + 1;
 		diffPairs[j*2] = _uset[i];
 		diffPairs[j*2 + 1] = _uset[i + 1];
-		fprintf(file, "diffPairs[j*2] %d\r\n", diffPairs[j*2]);
 
+#ifdef DEBUG_TOOL
+		fprintf(file, "diffPairs[j*2] %d\r\n", diffPairs[j*2]);
+#endif
 	}
 	
 	int prodPermutation = 1;

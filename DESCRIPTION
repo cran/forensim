@@ -2,8 +2,8 @@ Package: forensim
 Type: Package
 Title: Statistical tools for the interpretation of forensic DNA
         mixtures
-Version: 4.1
-Date: 2013-02-20
+Version: 4.3
+Date: 2013-09-14
 Author: Hinda Haned <h.haned@nfi.minvenj.nl>
 Maintainer: Hinda Haned <h.haned@nfi.minvenj.nl>
 Depends: methods, tcltk,tcltk2,tkrplot
@@ -18,8 +18,8 @@ Collate: classes_definitions.R classes_constructors.R accessors.R
         simPCR2.R simPCR2TK.R PV.R Hbsimu.R LR.R LRmixTK.R
 Repository: CRAN
 Repository/R-Forge/Project: forensim
-Repository/R-Forge/Revision: 427
-Repository/R-Forge/DateTimeStamp: 2013-02-20 14:32:55
-Date/Publication: 2013-05-05 22:11:52
-Packaged: 2013-02-20 15:17:47 UTC; rforge
+Repository/R-Forge/Revision: 443
+Repository/R-Forge/DateTimeStamp: 2013-09-14 07:54:35
+Date/Publication: 2013-09-15 18:24:49
+Packaged: 2013-09-14 10:15:22 UTC; rforge
 NeedsCompilation: yes

@@ -1,12 +1,12 @@
-24512c0db67caff2b09b083f5fdd577e *DESCRIPTION
+1d4deab2e3f18b10ff4e9b4d12e7fc83 *DESCRIPTION
 ace60069cf1e1d7ae110326d82c612b1 *NAMESPACE
-07060a92221fbf776e7a0845c3d60ef4 *R/A2.simu.R
-8e7cd1e4c2f1b310ddab43c527361cef *R/A3.simu.R
-a4f65c13ebce62c69931ba1dc5a6e75f *R/A4.simu.R
+64a67926f0d31a1177d315d850ea2d94 *R/A2.simu.R
+9cd237b099a2dfeeb16fd82d3af6abb6 *R/A3.simu.R
+711181fa0f222a382806d502a899b316 *R/A4.simu.R
 5670a43e2ceb137b60be154dffaed127 *R/AuxFunc.R
-49ec76941789c7f62fd413bb1b010779 *R/Hbsimu.R
+4b1c9a9b811a2f5fdc951cdc7b4ce4b3 *R/Hbsimu.R
 10f6a784ffa12b48b15a99c840ba2884 *R/LR.R
-3380a14ea049cde324a9fddb897cb80d *R/LRmixTK.R
+11f970f9bfe4091bacead4a8b2b20a2a *R/LRmixTK.R
 8ce32e6fc3861521c17d3873e6a3e6df *R/N2Exact.R
 9fc0dedb8228b7ce3effb75043552a73 *R/N2error.R
 efe77155252ed001c8d277f638c33acb *R/PE.R
@@ -17,11 +17,11 @@ ada8268874265efece4fb232701125e0 *R/changepop.R
 fa39e7a16eaaa028b54dfd75af9478ae *R/classes_definitions.R
 287fb9cb68eaaab986877f7744cede17 *R/likelihood.R
 66fd7658b2327ab4b4fffd6a355074a6 *R/likestim.R
-ceb60a04c656a041c5612498c44467eb *R/mastermix.R
+a7100e144b381c91fa65d28c9c09d077 *R/mastermix.R
 a8146dc05d5df2d8313458fce50ec7be *R/mincontri.R
 2b8f221345995800563f94dc4aca8014 *R/simMixSNP.R
 c3b8b4f486e58bad8a7599c7a06a9345 *R/simPCR2.R
-3944ac9db84ca1fbf2239813d85568d0 *R/simPCR2TK.R
+15b6331f614fca87159796751f48100e *R/simPCR2TK.R
 9286e1b84dac4842e14162e63fd880ef *R/simufreqD.R
 5fdfce9ae35a3edacb2993c60bd97e37 *R/simupopD.R
 037ab07e0473527f769dcd6a33e74c5c *R/wrapdataL.R
@@ -56,7 +56,7 @@ ab3bb8e3357014b376b672749d2b71a5 *man/findmax.Rd
 6684d660f1107c8989062239d5b5c39b *man/forensim.package.Rd
 c40c43e67bac72353551594ce768ee14 *man/lik.Rd
 c524b95bd036ceb169b65f594a86ddf6 *man/lik.loc.Rd
-ef88592dad62dd58cd56279e990e8b27 *man/likEvid.Rd
+ed7d21a130da03153904025b2672b812 *man/likEvid.Rd
 04d8b7b22d79548289504ad658e4e419 *man/likestim.Rd
 094de55a29766b12f0efa585495ce313 *man/likestim.loc.Rd
 572fac43a2e087229918f05dd90277ad *man/mastermix.Rd
@@ -78,4 +78,4 @@ c76245ae16aac4d0faee2a9205ff99a9 *man/tabfreq.Rd
 e64ce0fee79b8683bc2c218c2299961e *man/virClasses.Rd
 f7f3067f21f5af2656d13758d8e328bb *man/wrapdataL.Rd
 dae6583699aea27866e995ea67aa3847 *src/auxilary.c
-2669131d355f7e2493033493a0c8b0fe *src/recursFinal.c
+88a6fb34a3cd3e2ca0de9a4fdce433cf *src/recursFinal.c

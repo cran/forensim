@@ -7,9 +7,9 @@
 # patch 4.1, Delft
 LRmixTK <-function()
 {
-	if(!require(tcltk)) stop("package tcltk is required")
-	if(!require(tcltk2)) stop("package tcltk2 is required")
-	if(!require(tkrplot)) stop("package tkrplot is required")
+	# if(!require(tcltk)) stop("package tcltk is required")
+	# if(!require(tcltk2)) stop("package tcltk2 is required")
+	# if(!require(tkrplot)) stop("package tkrplot is required")
 	tclRequire("Tktable")
 	font0 <- tkfont.create(family="courrier",size=35,weight="bold",slant="italic")
 	font1<-tkfont.create(family="times",size=14,weight="bold")#,slant="italic")
@@ -462,38 +462,44 @@ LRmixTK <-function()
 			xp<-as.numeric(tclvalue(ncHp))
 			xd<-as.numeric(tclvalue(ncHd))
 			theta0<-as.numeric(tclvalue(theta))
-			# init. list for the storage of LRs for each simulated profile
-			listTab<-vector('list',M)
+			# init. vector for the storage of LRs for each simulated profile
+			lr0<-rep(1,M)
 			print('========= Performance plot ============')
-			
-			for(mm in 1:M)
-			{
-				cat(paste(100*mm/M,'%',sep=''), 'completed','\n')
-				lr0<-rep(0,length(loc0))
-				names(lr0)<-loc0
-				for(jj in loc0)
-				{
-					rep0<-cspFinal[[jj]]
-					if(is.list(TdFinal )){ tmpTd<-unlist(TdFinal[jj])}
-					else{ tmpTd<-0}
-					#numerator Pr(E|Hp)
-					drop0<-as.numeric(tclvalue(prD))
-					randoman<-as.numeric(strsplit(simugeno(tab=data1,n=1,which.loc=jj)$tab.geno,'/')[[1]])
-					if(!is.null(TpFinal)){tp<-c(unlist(TpFinal[[jj]]), randoman)}
-					else{tp<-randoman}
-					Vd<-unlist(VdFinal[[jj]])
-					lr0[jj]<-likEvid(Repliste=(rep0),T=tp,V=0,x=xp,theta=theta0,prDHet=rep(drop0,5),prDHom=rep(drop0^2,5),prC=as.numeric(tclvalue(prC)),freq=data0[[jj]])/
-					likEvid(Repliste=(rep0),T=tmpTd,V=Vd,x=xd,theta=theta0,prDHet=rep(drop0,5),prDHom=rep(drop0^2,5),prC=as.numeric(tclvalue(prC)), freq=data0[[jj]])# V does not contribute to replicate probability
-					# V does not contribute to replicate probability)
-				}
-				
-				
-				listTab[[mm]]<-prod(lr0)
-			}
+      	   	drop0<-as.numeric(tclvalue(prD)) #get dropout-prob from GUI
+			for(jj in loc0) {
+                   popfreq = data0[[jj]] #get allele-frequencies
+			 rep0<-cspFinal[[jj]] #get evidence
+
+			 #denumerator Pr(E|Hd)
+  	 		 if(is.list(TdFinal )){ tmpTd<-unlist(TdFinal[jj])}
+			 else{ tmpTd<-0}
+                   Vd<-unlist(VdFinal[[jj]])
+        	       hd_val = likEvid(Repliste=(rep0),T=tmpTd,V=Vd,x=xd,theta=theta0,prDHet=rep(drop0,5),prDHom=rep(drop0^2,5),prC=as.numeric(tclvalue(prC)), freq=data0[[jj]]) # V does not contribute to replicate probability)
+ 
+			 #numerator Pr(E|Hp). G is all possible genotypes:
+                   hp_val <- rep(NA,M) #vector for hp_values of random man
+                   G <- t(as.matrix(expand.grid(rep(list(as.numeric(names(popfreq)),as.numeric(names(popfreq)) )))))
+                   keep <- G[2,]>=G[1,] #unique genotypes
+                   G <- G[,keep]  #store genotypes
+                   tmpP <- t(as.matrix(expand.grid(rep(list(as.numeric(popfreq),as.numeric(popfreq) )))))
+                   Gprob <- exp(colSums(log(tmpP[,keep]))) #get genotype probs
+                   ishet <- G[1,]!=G[2,]
+  			 Gprob[ishet] <- 2*Gprob[ishet] #multiply with two to get heterozygote probs
+                   Gsampled <- sample(1:length(Gprob),size=M,prob=Gprob,replace=TRUE)
+                   unGsampled <- unique(Gsampled) #get unique sampled
+                   for(uu in 1:length(unGsampled)) {
+                    randoman <- as.numeric(G[,unGsampled[uu]]) #get allele-frequence of unique random man
+        		  if(!is.null(TpFinal)){tp<-c(unlist(TpFinal[[jj]]), randoman)}
+			  else{tp<-randoman}
+                    hp_val[ Gsampled==unGsampled[uu] ] <-likEvid(Repliste=(rep0),T=tp,V=0,x=xp,theta=theta0,prDHet=rep(drop0,5),prDHom=rep(drop0^2,5),prC=as.numeric(tclvalue(prC)),freq=data0[[jj]]) #calculate for unique random man
+                   } #end for each unique calculation
+		 	 lr0 <- lr0*hp_val/hd_val #multiply with LR-value for current locus for all randoms
+     			 cat(paste(jj, 'completed','\n'))
+			} #end 'jj' for each locus
 			
 			print('===================================')
 		#--- sensitivity analysis
-			distriLR<-log(unlist(listTab), 10) 
+			distriLR<-log(lr0, 10) 
 			# # plot the empirical cumultaive distribution of the log10  LR, using function ecdf 
 			# plot(ecdf(log(distriLR,10)),xlab='log10 LR')
 			qvals <- c(0.01,0.05,0.5,0.95,0.99)
@@ -1238,11 +1244,11 @@ write.table('\n',file=filen,append=TRUE,row.names=FALSE,col.names=FALSE,quote=FA
 				copy.but <- tkbutton(frameC,text="Copy to Clipboard",font="courrier 10",fg="darkblue",command=CopyToClip)
 				# export.but <- tkbutton(frameC,text="Export results",font="courrier 10",fg="darkblue",command=CopyToClip)
 #				
-likHp<-apply(sapply(Hpres,rbind),1,prod)#get the prodcut of the likelihoods among loci for all Drop values
-likHd<-apply(sapply(Hdres,rbind),1,prod)
+			likHp<-apply(sapply(Hpres,rbind),1,prod)#get the prodcut of the likelihoods among loci for all Drop values
+			likHd<-apply(sapply(Hdres,rbind),1,prod)
 
-LRtab2<-signif(cbind.data.frame(vecD,likHp,likHd,likHp/likHd,log10(likHp/likHd)),4)
-colnames(LRtab2)<-c('Pr(D)','Pr(E|Hp)','Pr(E|Hd)','LR','log10(LR)')
+			LRtab2<-signif(cbind.data.frame(vecD,likHp,likHd,likHp/likHd,log10(likHp/likHd)),4)
+			colnames(LRtab2)<-c('Pr(D)','Pr(E|Hp)','Pr(E|Hd)','LR','log10(LR)')
 
 				excel.but2<-tkbutton(frameC, text="Export Log File",fg="darkblue", font="courrier 10",command=function() exportFile2(LRtab2,r0,r1))#,command=function() openFile())
 				info.but<-tkbutton(frameC, text="Info?",fg="darkblue", font="courrier 10",command=function() infoSP())
@@ -1307,7 +1313,7 @@ colnames(LRtab2)<-c('Pr(D)','Pr(E|Hp)','Pr(E|Hd)','LR','log10(LR)')
 	openFile<-function(file0,caselist,top,ext)
 	{		
 		fileName<-tclvalue(tkgetOpenFile(parent=top,initialdir=tclvalue(file0),multiple="true",
-		filetypes="{{CSV Files} {.csv .txt}} {{Tab-delimited Files} {.tab}}")) #tclvalue(tkgetOpenFile())
+		filetypes="{{CSV Files} {.csv .txt}} ")) #tclvalue(tkgetOpenFile())
 		if (!nchar(fileName))
 		{
 			tkmessageBox(message="No file was selected!")
@@ -1650,7 +1656,7 @@ filePath2<-tclVar(''); 	extens2<-tclVar('')
 	# it will update the valueof filepath22 to its current value
 	importAF<-function(fa,pa,ex,d0)#frame, pathfile, and extension var
 	{
-		file0<-tclvalue(tkgetOpenFile(parent=fa,initialdir=tclvalue(pa),multiple="true",		filetypes="{{CSV Files} {.csv .txt}} {{Tab-delimited Files} {.tab}}"))
+		file0<-tclvalue(tkgetOpenFile(parent=fa,initialdir=tclvalue(pa),multiple="true",filetypes="{{CSV Files} {.csv .txt}}"))
 	
 		if (!nchar(file0))
 		{
