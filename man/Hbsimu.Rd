@@ -16,11 +16,12 @@ A Tcl/Tk simulator of the  heterozygous balance
 Hbsimu()
 }
 
+\value{No return value, called to show GUI.}
 
-\author{ Hinda Haned  \email{h.haned@nfi.minvenj.nl} }
+\author{ Hinda Haned  \email{hinda@owlsandarrows.nl} }
 
 \references{
-Gill P, Curran J and Elliot K. A graphical simulation model of the entire DNA process associated with the analysis of short 
+Gill P, Curran J and Elliot K. A graphical simulation model of the entire DNA process associated with the analysis of short
 tandem repeat loci.\emph{ Nucleic Acids Research} 2005, 33(2): 632-643.
 }
 \examples{

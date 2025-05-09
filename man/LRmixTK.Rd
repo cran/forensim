@@ -5,7 +5,12 @@
 \description{
 User-friendly graphical user interface for the LR calculator LR. }
 \usage{
-LRmixTK()
+LRmixTK(verbose)
 }
-\author{Hinda Haned \email{h.haned@nfi.minvenj.nl}}
+\arguments{
+  \item{verbose}{if TRUE, progress is written to the console}
+}
+\value{No return value, called to show GUI.}
+
+\author{Hinda Haned \email{hinda@owlsandarrows.nl}}
 \keyword{htest}

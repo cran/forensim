@@ -18,9 +18,9 @@ mincontri(mix, loc = NULL)
   to all loci }
 }
 
+\value{Integer with minium number of contibutors.}
 
-
-\author{Hinda Haned \email{h.haned@nfi.minvenj.nl} }
+\author{Hinda Haned \email{hinda@owlsandarrows.nl} }
 
 \seealso{\code{\link{likestim}} for the estimation of the number of contributors through likelihood maximization }
 \examples{
